@@ -11,9 +11,11 @@ If you don't what this to happen, quit this process now!"
 -----------------------------------------------------------------
 EOF
 
-# read -p "Press ENTER to continue..."  result
+read -p "Press ENTER to continue..."  result
 
-if ! command -v nvimi &> /dev/null
+echo "---- Installing prerequisites -----"
+# Check if NeoVim is installed, if not, install it
+if ! command -v nvim &> /dev/null
 then
     echo "NeoVim is not installed. I'll install it first:"
     apt-get install curl
@@ -22,37 +24,49 @@ then
     chmod u+x nvim.appimage
     mv nvim.appimage /usr/local/bin/nvim
     chmod +x /usr/local/bin/nvim
-    # add-apt-repository ppa:neovim-ppa/stable    
-    # apt-get update
-    # apt-get install neovim -y
 fi 
 
+# Check if correct fonts are installed
+if ! command -v fc-list | grep "NerdFont" &> /dev/null
+then
+    echo "There is no NerdFont installed. I'll install it first:"   
+    apt-get install curl
+    curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
+
+    mkdir -p /usr/local/share/fonts/JetBrainsNerdFont
+    apt-get install unzip
+
+    unzip JetBrainsMono.zip -d /usr/local/share/fonts/JetBrainsNerdFont
+
+    apt-get install fontconfig
+    fc-cache -fv
+
+    rm JetBrainsMono.zip
+fi
+
+apt-get install ripgrep
 
 
-#
-#
-# echo "---- Deleting Current NeoVim configurations -----"
-# rm -rf ~/.local/share/nvim/
-# rm -rf ~/.config/nvim/
-#
-# echo "------ INSTALL VnChad ----"
-# git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 
-#
-# cp -r $PWD/* ~/.config/nvim/lua/
-# cp -r .git/ ~/.config/nvim/lua/
-# cp -r .gitignore ~/.config/nvim/lua/
-#
-# echo ""
-# echo "IMPORTANT: "
-# echo "Installation Should have been completed. I'm about to delete this folder."
-# echo "From now on you can go to ~/.config/nvim/lua/ and perform ./update.sh in order
-#       to do updates."
-# read -p "Press ENTER to continue..."  result
-#
-# CURRENT_DIR=$PWD
-# cd ~/.config/nvim/lua
+echo "---- Deleting Current NeoVim configurations -----"
+rm -rf ~/.local/share/nvim/
+rm -rf ~/.config/nvim/
+
+echo "------ INSTALL VnChad ----"
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 
+
+cp -r $PWD/* ~/.config/nvim/lua/
+cp -r .git/ ~/.config/nvim/lua/
+cp -r .gitignore ~/.config/nvim/lua/
+
+echo ""
+echo "IMPORTANT: "
+echo "Installation Should have been completed. I'm about to delete this folder."
+echo "From now on you can go to ~/.config/nvim/lua/ and perform ./update.sh in order
+      to do updates."
+read -p "Press ENTER to continue..."  result
+
+CURRENT_DIR=$PWD
+cd ~/.config/nvim/lua
 # rm -rf $CURRENT_DIR
 
-
-
-# nvim
+nvim
