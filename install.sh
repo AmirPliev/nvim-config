@@ -12,7 +12,9 @@ EOF
 
 read -p "Press ENTER to continue..."  result
 
+
 echo "---- Installing prerequisites -----"
+
 # Check if NeoVim is installed, if not, install it
 if ! command -v nvim &> /dev/null
 then
@@ -45,10 +47,20 @@ fi
 
 sudo apt-get install ripgrep
 
+# Check if node is installed, if not, install it
+if which node > /dev/null
+    then
+        echo "node is installed, huzzah..."
+    else
+      echo "node is not installed. I'll install it first:"
+      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+      nvm install node
+fi
+
 
 echo "---- Deleting Current NeoVim configurations -----"
-rm -rf ~/.local/share/nvim/
-rm -rf ~/.config/nvim/
+sudo rm -rf ~/.local/share/nvim/
+sudo rm -rf ~/.config/nvim/
 
 echo "------ INSTALL VnChad ----"
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 
