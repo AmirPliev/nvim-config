@@ -71,13 +71,11 @@ cp -r .gitignore ~/.config/nvim/lua/
 
 echo ""
 echo "IMPORTANT: "
-echo "Installation Should have been completed. I'm about to delete this folder."
+echo "Installation Should have been completed."
 echo "From now on you can go to ~/.config/nvim/lua/ and perform ./update.sh in order
       to do updates."
 read -p "Press ENTER to continue..."  result
 
-CURRENT_DIR=$PWD
 cd ~/.config/nvim/lua
-# rm -rf $CURRENT_DIR
 
 nvim
