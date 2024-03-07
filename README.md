@@ -33,9 +33,9 @@ command: `:NvChadUpdate`. This can be performed completely independent from this
 it whenever you want to.
 
 ## Further customization
-Read the [blog](https://nvchad.com/docs/quickstart/install) to learn how to further customize your configuration.
+Read the [VnChad Docs](https://nvchad.com/docs/quickstart/install) to learn how to further customize your configuration.
 
-Another useful resource is the [Vim-Plug Documentation](https://blog.spoonconsulting.com/getting-started-with-neovim-using-nvchad-a-developers-guide-f97d81e85d60)
+Another useful resource is this [blog](https://blog.spoonconsulting.com/getting-started-with-neovim-using-nvchad-a-developers-guide-f97d81e85d60)
 for some extra information on how to setup NvChad.
 
 ## Credits
