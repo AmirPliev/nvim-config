@@ -1,5 +1,4 @@
 #!/bin/bash
-USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 cat << EOF
 -----------------------------------------------------------------
 
@@ -18,45 +17,45 @@ echo "---- Installing prerequisites -----"
 if ! command -v nvim &> /dev/null
 then
     echo "NeoVim is not installed. I'll install it first:"
-    apt-get install curl
+    sudo apt-get install curl
 
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    chmod u+x nvim.appimage
-    mv nvim.appimage /usr/local/bin/nvim
-    chmod +x /usr/local/bin/nvim
+    sudo chmod u+x nvim.appimage
+    sudo mv nvim.appimage /usr/local/bin/nvim
+    sudo chmod +x /usr/local/bin/nvim
 fi 
 
 # Check if correct fonts are installed
 if ! command -v fc-list | grep "NerdFont" &> /dev/null
 then
     echo "There is no NerdFont installed. I'll install it first:"   
-    apt-get install curl
+    sudo apt-get install curl
     curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
 
-    mkdir -p /usr/local/share/fonts/JetBrainsNerdFont
-    apt-get install unzip
+    sudo mkdir -p /usr/local/share/fonts/JetBrainsNerdFont
+    sudo apt-get install unzip
 
     unzip JetBrainsMono.zip -d /usr/local/share/fonts/JetBrainsNerdFont
 
-    apt-get install fontconfig
-    fc-cache -fv
+    sudo apt-get install fontconfig
+    sudo fc-cache -fv
 
     rm JetBrainsMono.zip
 fi
 
-apt-get install ripgrep
+sudo apt-get install ripgrep
 
 
 echo "---- Deleting Current NeoVim configurations -----"
-rm -rf $USER_HOME/.local/share/nvim/
-rm -rf $USER_HOME/.config/nvim/
+rm -rf ~/.local/share/nvim/
+rm -rf ~/.config/nvim/
 
 echo "------ INSTALL VnChad ----"
-git clone https://github.com/NvChad/NvChad $USER_HOME/.config/nvim --depth 1 
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 
 
-cp -r $PWD/* $USER_HOME/.config/nvim/lua/
-cp -r .git/ $USER_HOME/.config/nvim/lua/
-cp -r .gitignore $USER_HOME/.config/nvim/lua/
+cp -r $PWD/* ~/.config/nvim/lua/
+cp -r .git/ ~/.config/nvim/lua/
+cp -r .gitignore ~/.config/nvim/lua/
 
 echo ""
 echo "IMPORTANT: "
@@ -66,7 +65,7 @@ echo "From now on you can go to ~/.config/nvim/lua/ and perform ./update.sh in o
 read -p "Press ENTER to continue..."  result
 
 CURRENT_DIR=$PWD
-cd $USER_HOME/.config/nvim/lua
+cd ~/.config/nvim/lua
 # rm -rf $CURRENT_DIR
 
 nvim
