@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!custom/
+!install.sh
+!update.sh
+!LICENSE
+
