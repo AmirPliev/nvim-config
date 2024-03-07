@@ -1,4 +1,10 @@
 local plugins = {
+
+  {
+    "github/copilot.vim",
+    lazy = false,
+  },
+
   {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
