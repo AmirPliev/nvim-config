@@ -72,10 +72,9 @@ cp -r .gitignore ~/.config/nvim/lua/
 echo ""
 echo "IMPORTANT: "
 echo "Installation Should have been completed."
+
 echo "From now on you can go to ~/.config/nvim/lua/ and perform ./update.sh in order
       to do updates."
 read -p "Press ENTER to continue..."  result
-
-cd ~/.config/nvim/lua
 
 nvim
