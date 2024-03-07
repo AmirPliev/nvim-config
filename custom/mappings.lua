@@ -14,6 +14,15 @@ M.general = {
   n = {
     ["<C-p>"] = { "<cmd> Telescope find_files <CR>", "Find files" },
     ["<leader>fg"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
+    ["<leader>ff"] = { "<cmd> Telescope live_grep follow=true no_ignore=true hidden=true <CR>", "Find all" },
+  },
+}
+
+M.Remote = {
+  n = {
+    ["<leader>rc"] = { "<cmd> RemoteSSHFSConnect<CR>", "Remote Connect" },
+    ["<leader>re"] = { "<cmd> RemoteSSHFSEdit<CR>", "Edit SSH Config" },
+    ["<leader>rd"] = { "<cmd> RemoteSSHFSDisconnect<CR>", "Disconnect Remote Connection" },
   },
 }
 
