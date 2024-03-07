@@ -21,7 +21,7 @@ then
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     chmod u+x nvim.appimage
     mv nvim.appimage /usr/local/bin/nvim
-    echo "export PATH=\$PATH:/usr/local/bin" >> ~/.bashrc
+    chmod +x /usr/local/bin/nvim
     # add-apt-repository ppa:neovim-ppa/stable    
     # apt-get update
     # apt-get install neovim -y
