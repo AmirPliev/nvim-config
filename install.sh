@@ -16,10 +16,18 @@ EOF
 if ! command -v nvimi &> /dev/null
 then
     echo "NeoVim is not installed. I'll install it first:"
-    add-apt-repository ppa:neovim-ppa/stable    
-    apt-get update
-    apt-get install neovim
+    apt-get install curl
+
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    chmod u+x nvim.appimage
+    mv nvim.appimage /usr/local/bin/nvim
+    echo "export PATH=\$PATH:/usr/local/bin" >> ~/.bashrc
+    # add-apt-repository ppa:neovim-ppa/stable    
+    # apt-get update
+    # apt-get install neovim -y
 fi 
+
+
 
 #
 #
