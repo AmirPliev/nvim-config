@@ -1,5 +1,5 @@
 #!/bin/bash
 
 echo "----- Updating -----"
-git checkout dev
-git pull origin dev
+git checkout main
+gitpersonal pull origin main
