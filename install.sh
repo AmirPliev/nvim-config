@@ -45,7 +45,7 @@ then
     rm JetBrainsMono.zip
 fi
 
-sudo apt-get install ripgrep
+sudo apt-get install ripgrep sshfs -y
 
 # Check if node is installed, if not, install it
 if which node > /dev/null
