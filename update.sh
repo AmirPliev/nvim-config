@@ -2,4 +2,4 @@
 
 echo "----- Updating -----"
 git checkout main
-gitpersonal pull origin main
+git pull origin main
