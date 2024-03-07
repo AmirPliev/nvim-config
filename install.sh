@@ -1,5 +1,5 @@
 #!/bin/bash
-
+USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 cat << EOF
 -----------------------------------------------------------------
 
@@ -48,15 +48,15 @@ apt-get install ripgrep
 
 
 echo "---- Deleting Current NeoVim configurations -----"
-rm -rf ~/.local/share/nvim/
-rm -rf ~/.config/nvim/
+rm -rf $USER_HOME/.local/share/nvim/
+rm -rf $USER_HOME/.config/nvim/
 
 echo "------ INSTALL VnChad ----"
-git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 
+git clone https://github.com/NvChad/NvChad $USER_HOME/.config/nvim --depth 1 
 
-cp -r $PWD/* ~/.config/nvim/lua/
-cp -r .git/ ~/.config/nvim/lua/
-cp -r .gitignore ~/.config/nvim/lua/
+cp -r $PWD/* $USER_HOME/.config/nvim/lua/
+cp -r .git/ $USER_HOME/.config/nvim/lua/
+cp -r .gitignore $USER_HOME/.config/nvim/lua/
 
 echo ""
 echo "IMPORTANT: "
@@ -66,7 +66,7 @@ echo "From now on you can go to ~/.config/nvim/lua/ and perform ./update.sh in o
 read -p "Press ENTER to continue..."  result
 
 CURRENT_DIR=$PWD
-cd ~/.config/nvim/lua
+cd $USER_HOME/.config/nvim/lua
 # rm -rf $CURRENT_DIR
 
 nvim
