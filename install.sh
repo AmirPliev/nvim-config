@@ -67,7 +67,8 @@ echo ""
 echo "------ INSTALL VnChad ----"
 echo ""
 
-cp -r nvim ~/.config/nvim
+mkdir -p ~/.config/nvim
+cp -r $PWD/* ~/.config/nvim
 cp -r .git/ ~/.config/nvim/lua/
 cp -r .gitignore ~/.config/nvim/lua/
 
