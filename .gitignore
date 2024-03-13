@@ -3,7 +3,7 @@
 
 # But not these files...
 !.gitignore
-!custom/
+!nvim/
 !install.sh
 !update.sh
 !LICENSE
