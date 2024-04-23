@@ -27,4 +27,21 @@ map("n", "<C-b>", function()
   vim.api.nvim_put({ "import pdb; pdb.set_trace()" }, "", true, true)
 end, { desc = "Python Breakpoint" })
 
-map("i", "<C-j>", '<C-R>=copilot#Accept("")<CR><Esc>', { desc = "Use copilot", remap = false })
+-- Copilot
+map(
+  "i",
+  "<C-j>",
+  'copilot#Accept("\\<CR>")',
+  { desc = "Use copilot", remap = false, expr = true, replace_keycodes = false }
+)
+
+vim.g.copilot_no_tab_map = true
+
+map("n", "<leader>ccq", function()
+  local input = vim.fn.input "Quick Chat: "
+  if input ~= "" then
+    require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+  end
+end, { desc = "CopilotChat - Quick chat" })
+
+map("n", "<leader>cc", "<cmd>:CopilotChatToggle<cr>", { desc = "CopilotChat - Toggle" })
