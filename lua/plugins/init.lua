@@ -7,6 +7,12 @@ return {
     end,
   },
 
+  {
+    "mg979/vim-visual-multi",
+    lazy = false,
+    opts = {},
+  },
+
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
